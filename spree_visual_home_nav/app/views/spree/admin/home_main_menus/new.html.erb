@@ -1,20 +1,12 @@
-<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @home_main_menu } %>
+<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @home_main_menu } %>
 
 <% content_for :page_title do %>
-  <%= Spree.t(:new_home_main_menu) %>
+  <%= t('.new_home_main_menu') %>
 <% end %>
 
-<%= form_for [:admin, @home_main_menu], html: { multipart: true } do |f| %>
+<%= form_for [:admin, @home_main_menu] do |f| %>
   <fieldset data-hook="new_home_main_menu">
-    <%= render partial: 'form', locals: { f: f } %>
-
-    <% @products_taxons.each do |taxon| %>
-      <%= render :partial => 'bullet_form', :locals => { :f => f } %>
-    <% end %>
-    <div class="form-actions" data-hook="buttons">
-      <%= button Spree.t('actions.update'), 'save' %>
-      <span class="or"><%= Spree.t(:or) %></span>
-      <%= button_link_to Spree.t('actions.cancel'), spree.admin_home, icon: 'delete', id: 'cancel_link' %>
-    </div>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
   </fieldset>
 <% end %>

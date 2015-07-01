@@ -9,13 +9,13 @@ module Spree
 
       def new
         @home_main_menu = HomeMainMenu.new
-        @home_main_menu.bullets.build
+       #@home_main_menu.home_bullets.build
       end
 
       def create
         @home_main_menu= HomeMainMenu.new(home_main_menu_params)
         if @home_main_menu.save
-          redirect_to admin_home, notice: 'Successfully created.'
+          redirect_to admin_home_management_index_path, notice: 'Successfully created.'
         else
           render :new
         end
@@ -27,7 +27,7 @@ module Spree
       def update
         @home_main_menu.update(home_main_menu_params)
         if @home_main_menu.save
-          redirect_to admin_home, notice: 'Successfully updated.'
+          redirect_to admin_home_management_index_path, notice: 'Successfully updated.'
         else
           render :edit
         end
@@ -39,13 +39,13 @@ module Spree
 
       private
 
-      def find_insert
+      def find_home_main_menu
         @home_main_menu = HomeMainMenu.find(params[:id])
       end
 
       def home_main_menu_params
         params.require(:home_main_menu).permit(:title, :meta_title, :meta_description,
-                                            :meta_keywords, :alternative_text, :active,
+                                            :meta_keywords, :alternative_text, :active, :attachment,
                                             bullets_attributes: [ :taxon, :color, :x, :y]
                                         )
       end

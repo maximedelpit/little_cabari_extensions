@@ -1,6 +1,6 @@
 class CreateHomeInserts < ActiveRecord::Migration
   def change
-    create_table :home_inserts do |t|
+    create_table :spree_home_inserts do |t|
       t.string :title
       t.string :meta_title
       t.text :meta_description

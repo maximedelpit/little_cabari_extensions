@@ -1,5 +1,5 @@
-<div id="visual-nav" class="col-md-12">
-  <%= image_tag(@home_main_menus.first.attachement, :original, alt: @home_main_menus.first.alt, class: 'home-main-image') %>
+<div id="visual-nav" class="col-sm-12">
+  <%= image_tag @home_main_menus.attachment.url(:original), alt: @home_main_menus.alt, class: 'home-main-image' %>
   <!-- To change with bullets + JS div -->
   <% @products_taxons.each_with_index do | taxon, index | %>
     <div id="bullet-<%= "#{index+1}" %>" class="<%= taxon.name.downcase %> bullet-<%= "#{index+1}" %> img-circle bullet" data-taxon-id="<%= taxon.id %>">
@@ -9,12 +9,16 @@
 </div>
 
 <div class="row">
-  <% @home_inserts.ech do | insert | %>
-    <div class="col-md-6 insert-frame text-center">
-      <div class="insert home" data-home-insert="<%= "#{i}" %>">
-        <h4><%= insert.title %></h4>
-        <div class="bar"></div>
-        <%= image_tag(insert.picture, :original, alt: insert.alt, class: 'home-insert') %>
+  <% @home_inserts.each_with_index do | insert, index | %>
+    <div class="col-sm-6 insert-frame">
+      <div class="insert home" data-home-insert="<%= "#{index}" %>">
+        <ul class="list-inline title-bars">
+          <li class="left-bar"></li>
+          <li class="title"><h4><%= insert.title %></h4></li>
+          <li class="right-bar"></li>
+          <li class="reset"></li>
+        </ul>
+        <%= image_tag(insert.attachment.url(:original), alt: insert.alt, class: 'home-insert') %>
       </div>
     </div>
   <% end %>

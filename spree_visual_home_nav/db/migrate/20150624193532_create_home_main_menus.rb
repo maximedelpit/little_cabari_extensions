@@ -1,6 +1,6 @@
 class CreateHomeMainMenus < ActiveRecord::Migration
   def change
-    create_table :home_main_menus do |t|
+    create_table :spree_home_main_menus do |t|
       t.string :title
       t.string :meta_title
       t.text :meta_description

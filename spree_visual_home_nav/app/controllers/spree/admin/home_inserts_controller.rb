@@ -14,7 +14,7 @@ module Spree
       def create
         @home_insert= HomeInsert.new(home_insert_params)
         if @home_insert.save
-          redirect_to admin_home, notice: 'Successfully created.'
+          redirect_to admin_home_management_index_path, notice: 'Successfully created.'
         else
           render :new
         end
@@ -26,7 +26,7 @@ module Spree
       def update
         @home_insert.update(home_insert_params)
         if @home_insert.save
-          redirect_to admin_home, notice: 'Successfully updated.'
+          redirect_to admin_home_management_index_path, notice: 'Successfully updated.'
         else
           render :edit
         end
@@ -38,13 +38,13 @@ module Spree
 
       private
 
-      def find_insert
+      def find_home_insert
         @home_insert = HomeInsert.find(params[:id])
       end
 
       def home_insert_params
         params.require(:home_insert).permit(:title, :meta_title, :meta_description,
-                                            :meta_keywords, :alternative_text, :active)
+                                            :meta_keywords, :alternative_text, :active, :attachment)
       end
     end
   end

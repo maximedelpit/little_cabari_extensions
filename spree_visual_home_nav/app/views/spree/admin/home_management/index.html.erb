@@ -1,8 +1,16 @@
 <div class="col-md-6" data-hook="admin-home-main-menus">
-  <%= render 'home_resource_form', instances: @home_main_menus  %>
+  <%= render 'home_resource_form', input_objects: @home_main_menus, input_object:"home_main_menu",
+      add_object: new_admin_home_main_menu_path,
+      #edit_object: edit_admin_home_main_menu_path,
+      #delete_object: admin_home_insert_path,
+      title: "Home Management", subtitle: "Home Main Menus" %>
 </div>
 
 
 <div class="col-md-6" data-hook="admin-home-inserts">
-  <%= render 'home_resource_form', instances: @home_inserts %>
+  <%= render 'home_resource_form', input_objects: @home_inserts, input_object:"home_main_insert",
+      add_object: new_admin_home_insert_path,
+      #edit_object: edit_admin_home_insert_path,
+      #delete_object: admin_home_insert_path,
+      title: "", subtitle: "Home Inserts" %>
 </div>

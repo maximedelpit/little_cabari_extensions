@@ -48,3 +48,64 @@ $taxons: (taxon1: (250px, 200px), taxon2: (300px, 100px), taxon3: (250px, 300px)
     }
   }
 }
+
+.home-main-image {
+  width: 100%;
+}
+
+.insert-frame {
+  margin-bottom: 40px;
+}
+
+.insert.home {
+  padding: 0px 0px 0px 0px;
+  // mak padding right and left vary
+
+  ul.list-inline.title-bars {
+    margin-bottom: 0px;
+    margin-left: 0px
+  }
+}
+.home-insert {
+  min-height: 212px;
+}
+
+
+.insert-frame:nth-child(odd){
+  float:left;
+  text-align: left;
+
+  .insert.home {
+    padding-right: 10%;
+    // mak padding right and left vary
+
+    ul.list-inline.title-bars {
+      margin-bottom: 0px;
+      margin-left: 0px
+    }
+  }
+  .home-insert {
+    min-height: 212px;
+    width: 100%
+  }
+}
+
+
+.insert-frame:nth-child(even){
+  float:right;
+  text-align: right;
+
+  .insert.home {
+    padding-left: 10%;
+    // mak padding right and left vary
+
+    ul.list-inline.title-bars {
+      margin-bottom: 0px;
+      margin-left: 0px
+    }
+  }
+  .home-insert {
+    min-height: 212px;
+    width: 100%
+  }
+}
