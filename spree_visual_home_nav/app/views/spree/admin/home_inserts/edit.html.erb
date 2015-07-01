@@ -1,0 +1,32 @@
+<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @home_insert } %>
+
+<% content_for :page_title do %>
+  <%= Spree.t(:edit_home_insert) %>
+<% end %>
+
+<%= form_for [:admin, @home_insert], :html => { :multipart => true } do |f| %>
+  <div data-hook="edit_home_insert" class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="panel-title">
+        <%= @home_insert.attachment_file_name%>
+      </h1>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <div data-hook="thumbnail" class="col-md-3 text-center">
+          <%= f.label Spree.t(:thumbnail) %>
+          <%= link_to image_tag(@home_insert.attachment.url(:small)), @home_insert.attachment.url(:product) %>
+        </div>
+        <div class="col-md-9">
+          <%= render :partial => 'form', :locals => { :f => f } %>
+        </div>
+
+        <div class="form-actions" data-hook="buttons">
+          <%= button Spree.t('actions.update'), 'save' %>
+          <span class="or"><%= Spree.t(:or) %></span>
+          <%= button_link_to Spree.t('actions.cancel'), spree.admin_product_home_inserts_url(@product), :id => 'cancel_link', :icon => 'delete' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

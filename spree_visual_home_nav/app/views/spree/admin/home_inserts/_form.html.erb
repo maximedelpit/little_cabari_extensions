@@ -1,0 +1,45 @@
+<div data-hook="admin_image_form_fields" class="row">
+  <div data-hook="title" class="col-md-6">
+    <div class="form-group">
+      <%= f.label :title, Spree.t(:title) %>
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div data-hook="file" class="form-group">
+      <%= f.label :attachment, Spree.t(:filename) %>
+      <%= f.file_field :attachment %>
+    </div>
+  </div>
+  <div data-hook="alt_text" class="col-md-12">
+    <div class="form-group">
+      <%= f.label :alt, Spree.t(:alt_text) %>
+      <%= f.text_area :alt, :rows => 4, :class => 'form-control' %>
+    </div>
+  </div>
+  <div data-hook="meta_title" class="col-md-4">
+    <div class="form-group">
+      <%= f.label :meta_title, Spree.t(:meta_title) %>
+      <%= f.text_field :meta_title, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div data-hook="meta_keywords" class="col-md-4">
+    <div class="form-group">
+      <%= f.label :meta_keywords, Spree.t(:meta_keywords) %>
+      <%= f.text_field :meta_keywords, :class => 'form-control' %>
+    </div>
+  </div>
+  <div data-hook="meta_description" class="col-md-4">
+    <div class="form-group">
+      <%= f.label :meta_description, Spree.t(:meta_description) %>
+      <%= f.text_area :meta_description, :rows => 4, :class => 'form-control' %>
+    </div>
+  </div>
+  <div data-hook="status" class="col-md-12">
+    <div class="form-group">
+      <%= f.label :active, Spree.t(:active) %>
+      <%= f.check_box :active, :class => 'form-control', true, false %>
+    </div>
+  </div>
+</div>

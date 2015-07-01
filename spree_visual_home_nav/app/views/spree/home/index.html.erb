@@ -1,0 +1,21 @@
+<div id="visual-nav" class="col-md-12">
+  <%= image_tag(@home_main_menus.first.attachement, :original, alt: @home_main_menus.first.alt, class: 'home-main-image') %>
+  <!-- To change with bullets + JS div -->
+  <% @products_taxons.each_with_index do | taxon, index | %>
+    <div id="bullet-<%= "#{index+1}" %>" class="<%= taxon.name.downcase %> bullet-<%= "#{index+1}" %> img-circle bullet" data-taxon-id="<%= taxon.id %>">
+      +
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <% @home_inserts.ech do | insert | %>
+    <div class="col-md-6 insert-frame text-center">
+      <div class="insert home" data-home-insert="<%= "#{i}" %>">
+        <h4><%= insert.title %></h4>
+        <div class="bar"></div>
+        <%= image_tag(insert.picture, :original, alt: insert.alt, class: 'home-insert') %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,68 @@
+<%# content_for :page_title do %>
+  <%#= plural_resource_name(instances.class) %>
+<%# end %>
+
+<%# content_for :page_actions do %>
+  <%#= button_link_to Spree.t("new_#{instance}".to_sym), new_object_url, { :class => "btn-success", :icon => 'add', 'data-update' => "new_#{instance}", :id => "new_#{instance}_link" } %>
+<%# end %>
+
+<%# content_for :table_filter do %>
+  <div data-hook="admin_#{instance}_sidebar">
+    <%#= search_form_for [:admin, @search] do |f| %>
+
+      <%#- locals = {:f => f} %>
+
+      <div class="row">
+        <div class="col col-md-6">
+          <div data-hook="admin_#{instance}_index_search" class="form-group">
+            <%#= f.label :name_cont, Spree.t(:name) %>
+            <%#= f.text_field :name_cont, :class => "form-control js-quick-search-target" %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%#= f.label :presentation_cont, Spree.t(:presentation) %>
+            <%#= f.text_field :presentation_cont, :class => "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions" data-hook="admin_#{instances}_index_search_buttons">
+        <%#= button Spree.t(:search), 'search' %>
+      </div>
+
+    <%# end %>
+  </div>
+<%# end %>
+
+<% if instances.any? %>
+  <table class="table" id='listing_#{instances}' data-hook>
+    <thead>
+      <tr data-hook="listing_#{instances}_header">
+        <th><%= Spree.t(:title) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% instances.each do |instance| %>
+        <!-- probably a trouble with dom_id instance -->
+        <tr id="<%= spree_dom_id instance %>" data-hook="listing_#{instances}_row">
+          <td><%= instance.title %></td>
+          <td><%= instance.presentation %></td>
+          <td class="actions actions-2 text-right">
+            <%= link_to_edit(instance, :no_text => true) %>
+            <%= link_to_delete(instance, :no_text => true) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%#= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::instance)) %>,
+    <%#= link_to Spree.t(:add_one), new_object_url %>!
+  </div>
+<% end %>
+
+<%#= paginate @collection %>

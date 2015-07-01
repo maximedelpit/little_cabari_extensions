@@ -1,0 +1,50 @@
+/*
+Placeholder manifest file.
+the installer will append this file to the app vendored assets here: 'vendor/assets/stylesheets/spree/frontend/all.css'
+*/
+
+  /* -------------------------------------
+ * Vars
+ * ------------------------------------- */
+
+$color-collection: ($red, $green-dark, $purple, $blue-light, $green, $orange, $blue-dark);
+$taxons_numb: 5;
+  $taxon1: 250px;//(250, 200); // bottom, left
+  $taxon2: 450px;//(200, 400);
+  $taxon3: 100px;//(300, 800);
+  $taxon4: 200px;//(400, 1000);
+  $taxon5: 500px;//(280, 300);
+
+$taxons: (taxon1: (250px, 200px), taxon2: (300px, 100px), taxon3: (250px, 300px), taxon4: (450px, 600px), taxon5: (500px, 400px));
+
+
+
+  /* -------------------------------------
+ * Values
+ * ------------------------------------- */
+
+#visual-nav {
+  position: relative;
+
+  .bullet {
+    width: 2.4%;
+    text-align: center;
+    font-size: bold;
+    color: white;
+    border: 2px solid white;
+    z-index: 3;
+  }
+
+  @for $i from 1 through $taxons_numb {
+    $taxon: map-get($taxons, taxon#{$i});
+    .bullet-#{$i} {
+      position: absolute;
+      background-color: nth($color-collection, $i);
+      bottom: nth($taxon, 1);
+      left: nth($taxon, 2);
+      // bottom: #{"taxon"$i}
+      // bottom: nth(#{'$taxon'+$i}, 1);
+      // left: nth(#{'$taxon'+$i}, 1);
+    }
+  }
+}
