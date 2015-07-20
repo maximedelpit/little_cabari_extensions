@@ -1,0 +1,38 @@
+<% content_for :sidebar_title do %>
+  <span class="name"><%= @lookbook.title %></span>
+<% end %>
+
+<% content_for :sidebar do %>
+  <nav class="menu">
+    <ul data-hook="admin_lookbook_tabs">
+      <li<%== ' class="active"' if current == 'Lookbook Details' %>>
+        <%= link_to_with_icon 'icon-edit', t(:lookbook_details), edit_admin_lookbook_url(@lookbook) %>
+      </li>
+      <li<%== ' class="active"' if current == 'Images' %>>
+        <%= link_to_with_icon 'icon-picture', t(:lookbook_images), [:admin, @lookbook, :lookbook_images] %>
+      </li>
+      <li<%== ' class="active"' if current == 'Lookbooks' %>>
+        <%= link_to_with_icon 'icon-book', t(:lookbooks), admin_lookbooks_url(@lookbook) %>
+      </li>
+      <% if @lookbook.present? && !@lookbook.new_record? %>
+        <li<%== ' class="active"' if current == 'Lookbook Details' %>>
+          <%= link_to_with_icon 'icon-edit', t(:lookbook_details), edit_admin_lookbook_url(@lookbook) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Lookbook Images' %>>
+          <%= link_to_with_icon 'icon-picture', t(:lookbook_images), [:admin, @lookbook, @lookbook, :lookbook_images] %>
+        </li>
+        <li<%== ' class="active"' if current == 'Lookbooks' %>>
+          <%= link_to_with_icon 'icon-film', t(:lookbooks), admin_lookbook_products_url(@lookbook) %>
+        </li>
+      <% end %>
+      <% if @look.present? && !@look.new_record? %>
+        <li<%== ' class="active"' if current == 'Lookbook Images' %>>
+          <%= link_to_with_icon 'icon-picture', t(:lookbook_images), [:admin, @lookbook, @lookbook, @lookbook, :lookbook_images] %>
+        </li>
+        <li<%== ' class="active"' if current == 'Lookbook Products' %>>
+          <%= link_to_with_icon 'icon-tasks', t(:lookbook_products), [:admin, @lookbook, @lookbook, @lookbook, :lookbook_products] %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+<% end %>

@@ -1,0 +1,86 @@
+<div data-hook="admin_lookbok_form_fields" class="row">
+  <div data-hook="lookbook_title" class="col-md-4">
+    <div class="form-group">
+      <%= f.label :title, Spree.t(:title) %>
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div data-hook="lookbook_season" class="col-md-4">
+    <div class="form-group">
+      <%= f.label :season, Spree.t(:season) %>
+      <%= f.text_field :season, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div data-hook="lookbook_permalink" class="col-md-4">
+    <div class="form-group">
+      <%= f.label :permalink, Spree.t(:permalink) %>
+      <%= f.text_field :permalink, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div data-hook="lookbook_description" class="col-md-12">
+    <div class="form-group">
+      <%= f.label :description, Spree.t(:description) %>
+      <%= f.text_field :description, :rows => 4, :class => 'form-control' %>
+    </div>
+  </div>
+
+
+  <div data-hook="lookbook_status" class="col-md-12">
+    <div class="form-group">
+      <%= f.label :active, Spree.t(:active) %>
+      <%= f.check_box :active, :class => 'checkbox' %>
+    </div>
+  </div>
+
+  <div class="col-md-4" data-hook="admin_lookbook_images" >
+    <%= fields_for :lookbook_images do |p| %>
+      <%= p.label :pictures, Spree.t(:filename) %>
+      <%= p.file_field :pictures, multiple: true %>
+    <% end %>
+  </div>
+
+  <div class="col-md-8" data-hook="admin_lookbook_products" >
+    <%= fields_for :lookbook_products, class: ['form-group'] do |i| %>
+        <%= i.label :product_ids, Spree.t(:products) %>
+        <% if can? :modify, Spree::Classification %>
+          <%= i.hidden_field :product_ids, value: @lookbook.lookbook_product_ids.join(','), :class => "product_picker" %>
+        <% elsif @lookbook.products.any? %>
+          <ul class="text_list">
+            <% @lookbook.products.each do |product| %>
+              <li><%= product.name %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <div class="alert alert-info"><%= Spree.t(:no_resource_found, resource: :products) %></div>
+        <% end %>
+    <% end %>
+  </div>
+
+
+
+
+<!--
+  <div class="col-md-12" data-hook="admin_lookbook_seo" >
+    <div data-hook="meta_title" class="col-md-6">
+      <div class="form-group">
+        <%#= f.label :meta_title, Spree.t(:meta_title) %>
+        <%#= f.text_field :meta_title, :class => 'form-control' %>
+      </div>
+    </div>
+    <div data-hook="meta_keywords" class="col-md-6">
+      <div class="form-group">
+        <%#= f.label :meta_keywords, Spree.t(:meta_keywords) %>
+        <%#= f.text_field :meta_keywords, :class => 'form-control' %>
+      </div>
+    </div>
+    <div data-hook="meta_description" class="col-md-12">
+      <div class="form-group">
+        <%#= f.label :meta_description, Spree.t(:meta_description) %>
+        <%#= f.text_area :meta_description, :rows => 4, :class => 'form-control' %>
+      </div>
+    </div>
+  </div> -->
+</div>

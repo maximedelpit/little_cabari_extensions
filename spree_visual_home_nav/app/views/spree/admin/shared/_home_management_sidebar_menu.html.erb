@@ -1,0 +1,5 @@
+<%# if can? :admin, Spree::HomeMainMenu %>
+  <ul class="nav nav-sidebar">
+    <%= tab Spree::HomeMainMenu, url: spree.admin_home_management_index_url, icon: 'home', label: t('.manage_home') %>
+  </ul>
+<%# end %>

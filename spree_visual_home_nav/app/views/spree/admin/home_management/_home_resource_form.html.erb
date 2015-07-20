@@ -31,8 +31,8 @@
               <% edit_path = edit_admin_home_insert_path(input_object) %>
               <% delete_path = admin_home_insert_path(input_object)%>
             <% end %>
-            <%= link_to("!", edit_path, :no_text => true, :class => "btn btn-primary btn-sm icon-link with-tip action-edit no-text") %>
-            <%= link_to("x", delete_path, :no_text => true,  method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm delete-resource icon-link with-tip action-delete no-text") %>
+            <%= link_to_with_icon('edit', '', edit_path, :no_text => true, :class => "btn btn-primary btn-sm icon-link with-tip action-edit no-text") %>
+            <%= link_to_with_icon('delete','', delete_path, :no_text => true,  method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm delete-resource icon-link with-tip action-delete no-text") %>
             <%#= link_to_edit(input_object, :no_text => true, :class => "admin_edit_#{input_object}") %>
             <%#= link_to_delete(input_object, :no_text => true) %>
           </td>

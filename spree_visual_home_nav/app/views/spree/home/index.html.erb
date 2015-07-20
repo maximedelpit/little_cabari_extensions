@@ -2,8 +2,12 @@
   <%= image_tag @home_main_menus.attachment.url(:original), alt: @home_main_menus.alt, class: 'home-main-image' %>
   <!-- To change with bullets + JS div -->
   <% @products_taxons.each_with_index do | taxon, index | %>
-    <div id="bullet-<%= "#{index+1}" %>" class="<%= taxon.name.downcase %> bullet-<%= "#{index+1}" %> img-circle bullet" data-taxon-id="<%= taxon.id %>">
-      +
+    <%# raise %>
+    <div id="bullet-<%= "#{index+1}" %>" class="<%= taxon.name.downcase %> bullet-<%= "#{index+1}" %> bullet undeployed" data-taxon-id="<%= taxon.id %>">
+      <span class="content plus" >+</span>
+      <span class="content title" >
+        <%= link_to taxon.name, spree.nested_taxons_path(taxon), :class => 'bullet-link' %>
+      </span>
     </div>
   <% end %>
 </div>

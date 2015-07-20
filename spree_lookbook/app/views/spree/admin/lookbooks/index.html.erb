@@ -1,0 +1,16 @@
+<% content_for :page_title do %>
+  <%= t('spree.lookbook.title.list') %>
+<% end %>
+
+<%#= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Lookbooks' } %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to t('spree.lookbook.link.new'), new_object_url, :icon => 'icon-plus', :id => 'admin_new_lookbook_link' %>
+<% end %>
+
+<div id="new_lookbook" data-hook></div>
+
+<%= render :partial => 'spree/admin/shared/lookbooks', :locals => { :lookbooks => @lookbooks } %>
+
+<%= paginate @lookbooks %>
+

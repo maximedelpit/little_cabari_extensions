@@ -7,16 +7,16 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
  * Vars
  * ------------------------------------- */
 
-$color-collection: ($red, $green-dark, $purple, $blue-light, $green, $orange, $blue-dark);
-$taxons_numb: 5;
+$color-collection: ($red, $green-dark, $purple, $blue-light, $green, $blue-dark, $orange);
+$taxons_numb: 7;
   $taxon1: 250px;//(250, 200); // bottom, left
   $taxon2: 450px;//(200, 400);
   $taxon3: 100px;//(300, 800);
   $taxon4: 200px;//(400, 1000);
   $taxon5: 500px;//(280, 300);
 
-$taxons: (taxon1: (250px, 200px), taxon2: (300px, 100px), taxon3: (250px, 300px), taxon4: (450px, 600px), taxon5: (500px, 400px));
-
+// $taxons: (taxon1: (250px, 200px), taxon2: (300px, 100px), taxon3: (250px, 300px), taxon4: (450px, 600px), taxon5: (500px, 400px));
+$taxons: ( taxon1: (29.5%, 13.7%), taxon2: (73%, 19%), taxon3: (32.4%, 31.6%), taxon4: (59%, 46%), taxon5: (43%, 60%), taxon6: (8.7%, 53%), taxon7: (72%, 79%));
 
 
   /* -------------------------------------
@@ -25,14 +25,20 @@ $taxons: (taxon1: (250px, 200px), taxon2: (300px, 100px), taxon3: (250px, 300px)
 
 #visual-nav {
   position: relative;
+  margin-bottom: 40px;
 
   .bullet {
-    width: 2.4%;
     text-align: center;
+    cursor: pointer;
     font-size: bold;
     color: white;
     border: 2px solid white;
+    border-radius: 18px;
     z-index: 3;
+    height: 26px;
+    font-size: 20px;
+    font-family: $navbar-header-font;
+    padding: 1px 20px;
   }
 
   @for $i from 1 through $taxons_numb {
@@ -47,6 +53,29 @@ $taxons: (taxon1: (250px, 200px), taxon2: (300px, 100px), taxon3: (250px, 300px)
       // left: nth(#{'$taxon'+$i}, 1);
     }
   }
+
+  .plus {
+    display: inline
+  }
+
+  .title {
+    display:none;
+    a.bullet-link {
+      color: white;
+      background-color: transparent;
+      &:hover, &:focus, &:select {
+        text-decoration: none;
+        color: inherit;
+        background-color: inherit;
+      }
+    }
+  }
+
+  .undeployed{
+    width: 26px;
+    padding: 0px
+
+  }
 }
 
 .home-main-image {
@@ -55,6 +84,11 @@ $taxons: (taxon1: (250px, 200px), taxon2: (300px, 100px), taxon3: (250px, 300px)
 
 .insert-frame {
   margin-bottom: 40px;
+
+  h1, h2, h4, h5, h6 {
+    font-family: $navbar-header-font;
+    margin: 10px 0px 0px 0px;
+  }
 }
 
 .insert.home {
@@ -62,12 +96,14 @@ $taxons: (taxon1: (250px, 200px), taxon2: (300px, 100px), taxon3: (250px, 300px)
   // mak padding right and left vary
 
   ul.list-inline.title-bars {
-    margin-bottom: 0px;
+    font-family: $navbar-header-font;
+    margin-bottom: 5px;
     margin-left: 0px
   }
 }
 .home-insert {
   min-height: 212px;
+  max-height: 250px;
 }
 
 
@@ -76,7 +112,7 @@ $taxons: (taxon1: (250px, 200px), taxon2: (300px, 100px), taxon3: (250px, 300px)
   text-align: left;
 
   .insert.home {
-    padding-right: 10%;
+    padding-right: 4%;
     // mak padding right and left vary
 
     ul.list-inline.title-bars {
@@ -96,7 +132,7 @@ $taxons: (taxon1: (250px, 200px), taxon2: (300px, 100px), taxon3: (250px, 300px)
   text-align: right;
 
   .insert.home {
-    padding-left: 10%;
+    padding-left: 4%;
     // mak padding right and left vary
 
     ul.list-inline.title-bars {

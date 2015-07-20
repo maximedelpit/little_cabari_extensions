@@ -1,0 +1,38 @@
+<% unless lookbooks.any? %>
+  <div class="no-objects-found">
+    <%= t('spree.lookbook.event.no_product') %>
+  </div>
+<% else %>
+  <table class="index sortable" id="listing_active_lookbooks" data-hook="active_lookbooks_table" data-sortable-link="<%= update_positions_admin_lookbooks_url(@lookbook) %>">
+    <colgroup>
+      <col style="width: 15%">
+      <col style="width: 70%">
+      <col style="width: 15%">
+      <col style="width: 25%">
+    </colgroup>
+    <thead>
+      <tr data-hook="admin_lookbooks_index_headers">
+        <th colspan="2"><%= t('spree.lookbook.active_record.name') %></th>
+        <th data-hook="admin_lookbooks_index_header_actions" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% lookbooks.each do |lookbook| %>
+        <tr id="<%= spree_dom_id lookbook %>" data-hook="admin_lookbooks_index_rows" class="<%= cycle('odd', 'even')%>">
+          <td class="no-border">
+            <span class="handle"></span>
+          </td>
+          <td><%= link_to lookbook.title, edit_admin_lookbook_url(lookbook) %></td>
+
+          <td class="actions" data-hook="admin_lookbooks_index_row_actions">
+            <p class="actions" data-hook="actions">
+              <%= link_to_edit_url edit_admin_lookbook_url(lookbook), :no_text => true %>
+              &nbsp;
+              <%= link_to_delete lookbook, { :url => admin_lookbook_url(lookbook), :no_text => true } %>
+            </p>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
