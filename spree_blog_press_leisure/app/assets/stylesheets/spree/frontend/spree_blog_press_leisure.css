@@ -1,0 +1,31 @@
+/*
+Placeholder manifest file.
+the installer will append this file to the app vendored assets here: 'vendor/assets/stylesheets/spree/frontend/all.css'
+*/
+
+
+div[data-hook="blog_elements_index"] {
+
+  h3 {
+    padding: 0 80px;
+  }
+
+  hr {
+    opacity: 0.4
+  }
+
+  span.author {
+    float: right;
+    font-style: italic;
+    font-size: $base-text-size;
+    margin-top: 8px;
+  }
+  .img-container {
+    margin: 20px 0px;
+  }
+
+  .content {
+    margin: 20px 0px;
+    padding: 0 80px;
+  }
+}

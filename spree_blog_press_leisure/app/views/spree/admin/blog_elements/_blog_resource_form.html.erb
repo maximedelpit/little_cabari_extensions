@@ -1,0 +1,48 @@
+<% content_for :page_title do %>
+  <%= title %>
+<% end %>
+
+<%# content_for :page_actions do %>
+  <%#= button_link_to Spree.t(:new_"#{input_object}"'), add_object, { :class => "btn-success", :icon => 'add', 'data-update' => "new_#{input_object}", :id => "new_#{input_object}_link"} %>
+<%# end %>
+
+<% if input_objects.any? %>
+  <div class="title action-block col-md-12">
+    <h4 class="col-md-1"><%= subtitle %></h4>
+    <div class="col-md- "> <%= button_link_to Spree.t(:add_one), add_object, {:class => "btn-success", :icon => 'add', 'data-update' => "new_#{input_object}", :id => "new_#{input_object}_link"} %>
+    </div>
+  </div>
+  <table class="table" id='listing_input_objects' data-hook>
+    <thead>
+      <tr data-hook=" <%= input_object %>s_header">
+        <th><%= Spree.t(:name) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% input_objects.each do |input_object| %>
+        <tr id="<%= spree_dom_id input_object %>" data-hook="<%= input_object %>s_row">
+          <td><%= input_object.title %></td>
+          <td class="actions actions-2 text-right">
+              <% edit_path = edit_admin_blog_element_path(input_object) %>
+              <% delete_path = admin_blog_element_path(input_object)%>
+            <%= link_to_with_icon('edit', '', edit_path, :no_text => true, :class => "btn btn-primary btn-sm icon-link with-tip action-edit no-text") %>
+            <%= link_to_with_icon('delete','', delete_path, :no_text => true,  method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm delete-resource icon-link with-tip action-delete no-text") %>
+            <%#= link_to_edit(input_object, :no_text => true, :class => "admin_edit_#{input_object}") %>
+            <%#= link_to_delete(input_object, :no_text => true) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="title action-block col-md-12">
+    <h4 class="col-md-6"><%= subtitle %></h4>
+    <div class="col-md-2"> <%= button_link_to Spree.t(:add_one), add_object, {:class => "btn-success", :icon => 'add', 'data-update' => "new_#{input_object}", :id => "new_#{input_object}_link"} %>
+    </div>
+  </div>
+  <div class="alert alert-info no-objects-found">
+    <%= Spree.t(:no_data_found) %>
+    <%= link_to Spree.t(:add_one), add_object %>!
+  </div>
+<% end %>

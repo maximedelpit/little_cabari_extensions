@@ -1,0 +1,33 @@
+<h2 id="creative-title" class="col-sm-8 col-sm-offset-2"><%= params[:category] %> Little Cabari</h2>
+<hr class="col-sm-8 col-sm-offset-2">
+
+<% @blog_elements.each do |blog_element| %>
+  <div class="col-sm-8 col-sm-offset-2" data-hook="blog_elements_index">
+    <div class="blog-element-container">
+      <h3>
+        <%= blog_element.title %>
+        <span class="author">
+          <%= Spree.t(:written_by) %>
+          <%= blog_element.author unless blog_element.author.empty? %>
+        </span>
+      </h3>
+      <div class="img-container text-center">
+        <% if blog_element.attachment %>
+          <%= link_to blog_element.attachment.url do %>
+            <%= image_tag blog_element.picture.url(:large) %>
+          <% end %>
+        <% else %>
+          <%#= link_to blog_element.picture.url do %>
+            <%= image_tag blog_element.picture.url(:large) %>
+          <%# end %>
+        <% end %>
+      </div>
+
+      <div class="content">
+        <%= blog_element.content %></br>
+        <hr>
+      </div>
+    </div>
+  </div>
+<%end %>
+

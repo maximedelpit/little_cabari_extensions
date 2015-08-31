@@ -1,0 +1,12 @@
+<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @blog_element } %>
+
+<% content_for :page_title do %>
+  <%= Spree.t('new_blog_element') %>
+<% end %>
+
+<%= form_for [:admin, @blog_element] do |f| %>
+  <fieldset data-hook="new_blog_element">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>

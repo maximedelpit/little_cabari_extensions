@@ -1,0 +1,78 @@
+<div data-hook="admin_image_form_fields" class="row">
+  <div data-hook="title" class="col-md-4">
+    <div class="form-group">
+      <%= f.label :title, Spree.t(:title) %>
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div data-hook="category" class="col-md-4">
+    <%= f.field_container :category, class: ['form-group'] do %>
+      <%= f.label :category, Spree.t(:category) %><span class='required'>*</span><br>
+      <%= f.select :category, Spree::BlogElement::CATEGORIES, {}, { multiple: false, class: 'select2', selected: @blog_element.category } %>
+      <%= f.error_message_on :category %>
+    <% end %>
+  </div>
+
+  <div data-hook="author" class="col-md-4">
+    <div class="form-group">
+      <%= f.label :author, Spree.t(:author) %>
+      <%= f.text_field :author, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div data-hook="permalink" class="col-md-6">
+    <div class="form-group">
+      <%= f.label :permalink, Spree.t(:permalink) %>
+      <%= f.text_field :permalink, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div data-hook="file_attachment" class="form-group">
+      <%= f.label :attachment, Spree.t(:filename_drawings) %>
+      <%= f.file_field :attachment, :class => 'form-control upload-field' %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div data-hook="file_picture" class="form-group">
+      <%= f.label :picture, Spree.t(:picture) %>
+      <%= f.file_field :picture, :class => 'form-control upload-field' %>
+    </div>
+  </div>
+
+  <div data-hook="alt_text" class="col-md-6">
+    <div class="form-group">
+      <%= f.label :alt, Spree.t(:alt_text) %>
+      <%= f.text_field :alt, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div data-hook="content" class="form-group">
+      <%= f.label :content, Spree.t(:content) %>
+      <%= f.text_area :content, :class => 'form-control' %>
+    </div>
+  </div>
+
+
+  <div data-hook="meta_title" class="col-md-6">
+    <div class="form-group">
+      <%= f.label :meta_title, Spree.t(:meta_title) %>
+      <%= f.text_field :meta_title, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div data-hook="meta_keywords" class="col-md-6">
+    <div class="form-group">
+      <%= f.label :meta_keywords, Spree.t(:meta_keywords) %>
+      <%= f.text_field :meta_keywords, :class => 'form-control' %>
+    </div>
+  </div>
+  <div data-hook="meta_description" class="col-md-12">
+    <div class="form-group">
+      <%= f.label :meta_description, Spree.t(:meta_description) %>
+      <%= f.text_area :meta_description, :rows => 4, :class => 'form-control' %>
+    </div>
+  </div>

@@ -1,0 +1,17 @@
+<div class="col-md-12" data-hook="admin-blog-articles">
+  <%= render 'blog_resource_form', input_objects: @blog_articles, input_object:"blog_element",
+      add_object: new_admin_blog_element_path,
+      title: Spree.t(:content_management), subtitle: Spree.t(:blog), category: "Blog" %>
+</div>
+
+<div class="col-md-12" data-hook="admin-press-articles">
+  <%= render 'blog_resource_form', input_objects: @press_articles, input_object:"blog_element",
+      add_object: new_admin_blog_element_path,
+      title: Spree.t(:content_management), subtitle: Spree.t(:press), category: "Press" %>
+</div>
+
+<div class="col-md-12" data-hook="admin-drawings">
+  <%= render 'blog_resource_form', input_objects: @drawings, input_object:"blog_element",
+      add_object: new_admin_blog_element_path,
+      title: Spree.t(:content_management), subtitle: Spree.t(:drawings), category: "Drawings" %>
+</div>
